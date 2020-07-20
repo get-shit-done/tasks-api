@@ -1,0 +1,52 @@
+[
+  {
+    "id": "B90G9qMfYVRT4fSZWsh6t",
+    "todoName": "finish this todo",
+    "isDone": false
+  },
+  {
+    "id": "O_iJnD3eQSpGaKBfAr1zY",
+    "todoName": "add an input to add new todos",
+    "isDone": false
+  },
+  {
+    "id": "8GtGVM3jNRN_y_CrREVIJ",
+    "todoName": "add validation to input",
+    "isDone": false
+  },
+  {
+    "id": "gHgP7o5NY7BdH74GHehoA",
+    "todoName": "add toast for removing todos",
+    "isDone": false
+  },
+  {
+    "id": "BAITeIHK4ucmaWqLpA4tj",
+    "todoName": "add conditional styling for isDone",
+    "isDone": false
+  },
+  {
+    "id": "uMvisE2g9fMKfDk_QzdNh",
+    "todoName": "add grouping",
+    "isDone": false
+  },
+  {
+    "id": "FQVlrBJsc6Z7-V9xCTvwb",
+    "todoName": "finalise resume",
+    "isDone": false
+  },
+  {
+    "id": "Ju2b-o81FRpt3zOfDoCm_",
+    "todoName": "complete courses",
+    "isDone": false
+  },
+  {
+    "id": "kAJDsAIrEmtoCrooZTkQH",
+    "todoName": "stretch",
+    "isDone": false
+  },
+  {
+    "id": "jexuRaQemwvJOpA4trFZd",
+    "todoName": "make Mai a kickass meal",
+    "isDone": false
+  }
+]
