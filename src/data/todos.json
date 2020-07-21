@@ -1,18 +1,1 @@
-[
-  { "id": "B90G9qMfYVRT4fSZWsh6t", "todoName": "finish this todo", "isDone": false },
-  { "id": "O_iJnD3eQSpGaKBfAr1zY", "todoName": "add an input to add new todos", "isDone": false },
-  { "id": "8GtGVM3jNRN_y_CrREVIJ", "todoName": "add validation to input", "isDone": false },
-  { "id": "gHgP7o5NY7BdH74GHehoA", "todoName": "add toast for removing todos", "isDone": false },
-  { "id": "BAITeIHK4ucmaWqLpA4tj", "todoName": "add conditional styling for isDone", "isDone": false },
-  { "id": "uMvisE2g9fMKfDk_QzdNh", "todoName": "add grouping", "isDone": false },
-  { "id": "FQVlrBJsc6Z7-V9xCTvwb", "todoName": "finalise resume", "isDone": false },
-  { "id": "Ju2b-o81FRpt3zOfDoCm_", "todoName": "complete courses", "isDone": false },
-  { "id": "kAJDsAIrEmtoCrooZTkQH", "todoName": "stretch", "isDone": false },
-  { "id": "jexuRaQemwvJOpA4trFZd", "todoName": "make Mai a kickass meal", "isDone": false },
-  { "id": "c361c223-a56b-499d-9f79-bb4a22d9ce0a", "todoName": "new todo again", "isDone": false },
-  { "id": "618941ea-3cdb-476a-8ccf-f89a46821b52", "todoName": "new todo agaisdsdsn", "isDone": false },
-  { "id": "f207ff43-ddd7-4f18-9568-20765e64551b", "todoName": "new", "isDone": false },
-  { "id": "5a623206-f543-4fb3-b492-f4466641b9de", "todoName": "new sdsdsd", "isDone": false },
-  { "id": "09fbd842-a912-4fc0-a6ad-fa296863f1d4", "todoName": "dsfdsfds", "isDone": false },
-  { "id": "e59bcafc-0dec-4e0a-892e-4dce470f7207", "todoName": "s", "isDone": false }
-]
+[{"id":"B90G9qMfYVRT4fSZWsh6t","todoName":"finish this todo","isDone":false},{"id":"O_iJnD3eQSpGaKBfAr1zY","todoName":"add an input to add new todos","isDone":false},{"id":"8GtGVM3jNRN_y_CrREVIJ","todoName":"add validation to input","isDone":false},{"id":"gHgP7o5NY7BdH74GHehoA","todoName":"add toast for removing todos","isDone":false},{"id":"BAITeIHK4ucmaWqLpA4tj","todoName":"add conditional styling for isDone","isDone":false},{"id":"uMvisE2g9fMKfDk_QzdNh","todoName":"add grouping","isDone":false},{"id":"FQVlrBJsc6Z7-V9xCTvwb","todoName":"finalise resume","isDone":false},{"id":"Ju2b-o81FRpt3zOfDoCm_","todoName":"complete courses","isDone":false},{"id":"kAJDsAIrEmtoCrooZTkQH","todoName":"stretch","isDone":false},{"id":"jexuRaQemwvJOpA4trFZd","todoName":"make Mai a kickass meal","isDone":false},{"id":"c361c223-a56b-499d-9f79-bb4a22d9ce0a","todoName":"new todo again","isDone":false},{"id":"618941ea-3cdb-476a-8ccf-f89a46821b52","todoName":"new todo agaisdsdsn","isDone":false},{"id":"f207ff43-ddd7-4f18-9568-20765e64551b","todoName":"new","isDone":false},{"id":"5a623206-f543-4fb3-b492-f4466641b9de","todoName":"new sdsdsd","isDone":false},{"id":"09fbd842-a912-4fc0-a6ad-fa296863f1d4","todoName":"dsfdsfds","isDone":false},{"id":"e59bcafc-0dec-4e0a-892e-4dce470f7207","todoName":"s","isDone":false},{"id":"0e6a1a43-3791-4a6e-a5dc-1657bb1d6094","todoName":"s","isDone":false}]
