@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import { router as todosRouter } from './src/routes/todos'
 import { router as groupsRouter } from './src/routes/groups'
 
-dotenv.config({ path: './config.env' }) // TODO: should go in server file, but not working (perhaps module)
+dotenv.config({ path: './config.env' })
 
 export const app = express()
 if (process.env.NODE_ENV === 'development') {

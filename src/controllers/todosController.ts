@@ -35,6 +35,7 @@ export const getTodos = (req: Request, res: Response) => {
     },
   })
 }
+
 export const getTodo = (req: Request, res: Response) => {
   const todo = todos.find(x => x.id === req.params.id)
   success({ statusCode: 200, data: todo, res })
