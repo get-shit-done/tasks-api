@@ -6,6 +6,7 @@
   "scripts": {
     "develop": "nodemon index.js"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/get-shit-done/tasks-api.git"
@@ -18,7 +19,8 @@
   },
   "homepage": "https://github.com/get-shit-done/tasks-api#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
