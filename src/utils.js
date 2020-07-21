@@ -1,4 +1,8 @@
-const determineResponse = ({ statusString, statusCode, data = {}, res }) =>
+import path from 'path'
+
+export const __dirname = path.resolve() // if set to type: module - dirname is undefined
+
+export const determineResponse = ({ statusString, statusCode, data = {}, res }) =>
   res.status(statusCode).json({
     status: statusString,
     data,

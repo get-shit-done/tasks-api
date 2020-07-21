@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "develop": "nodemon index.js"
+    "develop": "nodemon server.js",
+    "deploy": "NODE_ENV=production nodemon server.js"
   },
   "type": "module",
   "repository": {
@@ -19,7 +20,9 @@
   },
   "homepage": "https://github.com/get-shit-done/tasks-api#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "morgan": "^1.10.0",
     "uuid": "^8.2.0"
   },
   "devDependencies": {
