@@ -2,7 +2,7 @@ import path from 'path'
 
 export const __dirname = path.resolve() // if set to type: module - dirname is undefined
 
-const determineResponse = ({ statusString, statusCode, data = {}, res }) =>
+export const determineResponse = ({ statusString, statusCode, data = {}, res }) =>
   res.status(statusCode).json({
     status: statusString,
     data,
