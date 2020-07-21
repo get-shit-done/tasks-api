@@ -1,5 +1,5 @@
 import express from 'express'
-import { getGroups, addGroup, getGroup, updateGroup, deleteGroup } from '../controllers/groupsController.js'
+import { getGroups, addGroup, getGroup, updateGroup, deleteGroup } from '../controllers/groupsController'
 
 export const router = express.Router()
 

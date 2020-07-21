@@ -4,8 +4,8 @@ import morgan from 'morgan'
 import dotenv from 'dotenv'
 dotenv.config({ path: './config.env' }) // TODO: should go in server file, but not working (perhaps module)
 
-import { router as todosRouter } from './src/routes/todos.js'
-import { router as groupsRouter } from './src/routes/groups.js'
+import { router as todosRouter } from './src/routes/todos'
+import { router as groupsRouter } from './src/routes/groups'
 
 export const app = express()
 if (process.env.NODE_ENV === 'development') {

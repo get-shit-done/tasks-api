@@ -7,7 +7,7 @@ import {
   getTodo,
   updateTodo,
   deleteTodo,
-} from '../controllers/todosController.js'
+} from '../controllers/todosController'
 
 export const router = express.Router()
 router.param('id', handleBadId)

@@ -2,12 +2,11 @@
   "name": "tasks-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
-    "develop": "nodemon server.js",
-    "deploy": "NODE_ENV=production nodemon server.js"
+    "develop": "ts-node-dev server.ts",
+    "deploy": "NODE_ENV=production tsc"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/get-shit-done/tasks-api.git"
@@ -20,12 +19,18 @@
   },
   "homepage": "https://github.com/get-shit-done/tasks-api#readme",
   "dependencies": {
+    "@types/uuid": "^8.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
+    "ts-node-dev": "^1.0.0-pre.52",
+    "typescript": "^3.9.7",
     "uuid": "^8.2.0"
   },
   "devDependencies": {
+    "@types/morgan": "^1.9.1",
+    "@types/body-parser": "^1.19.0",
+    "@types/express": "^4.17.7",
     "nodemon": "^2.0.4"
   }
 }
