@@ -5,7 +5,7 @@ import path from 'path'
 import { v4 as uuid } from 'uuid'
 import { success, failure } from './src/utils.js'
 
-const __dirname = path.resolve()
+const __dirname = path.resolve() // if set to type: module - dirname is undefined
 const todos = JSON.parse(fs.readFileSync(`${__dirname}/src/data/todos.json`))
 
 const app = express()
@@ -44,11 +44,8 @@ const addTask = (req, res) => {
   })
 }
 
-app.get('/api/v1/todos', getTasks)
-app.get('/api/v1/todos/:id', getTask)
-app.patch('/api/v1/todos/:id', updateTask)
-app.delete('/api/v1/todos/:id', deleteTask)
-app.post('/api/v1/todos', addTask)
+app.route('/api/v1/todos').get(getTasks).post(addTask)
+app.route('/api/v1/todos/:id').get(getTask).patch(updateTask).delete(deleteTask)
 
 app.listen(8000, () => {
   console.log('started on port 8000')
