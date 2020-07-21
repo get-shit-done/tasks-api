@@ -1,20 +1,5 @@
 import express from 'express'
-
-const getGroups = (req, res) => {
-  res.status(500).json({ status: 'error', message: 'not yet defined' })
-}
-const addGroup = (req, res) => {
-  res.status(500).json({ status: 'error', message: 'not yet defined' })
-}
-const getGroup = (req, res) => {
-  res.status(500).json({ status: 'error', message: 'not yet defined' })
-}
-const updateGroup = (req, res) => {
-  res.status(500).json({ status: 'error', message: 'not yet defined' })
-}
-const deleteGroup = (req, res) => {
-  res.status(500).json({ status: 'error', message: 'not yet defined' })
-}
+import { getGroups, addGroup, getGroup, updateGroup, deleteGroup } from '../controllers/groupsController.js'
 
 export const router = express.Router()
 
