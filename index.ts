@@ -2,10 +2,10 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
-dotenv.config({ path: './config.env' }) // TODO: should go in server file, but not working (perhaps module)
-
 import { router as todosRouter } from './src/routes/todos'
 import { router as groupsRouter } from './src/routes/groups'
+
+dotenv.config({ path: './config.env' }) // TODO: should go in server file, but not working (perhaps module)
 
 export const app = express()
 if (process.env.NODE_ENV === 'development') {
