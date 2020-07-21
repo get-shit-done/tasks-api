@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1",
+    "name": "essentials",
+    "color": {
+      "name": "aero_blue",
+      "value": "rgb(216, 255, 230)"
+    }
+  },
+  {
+    "id": "2",
+    "name": "work",
+    "color": {
+      "name": "blanched_almond",
+      "value": "rgb(251, 231, 198)"
+    }
+  },
+  {
+    "id": "3",
+    "name": "improvement",
+    "color": {
+      "name": "mimi_pink",
+      "value": "rgb(255, 212, 219)"
+    }
+  },
+  {
+    "id": "4",
+    "name": "leasure",
+    "color": {
+      "name": "beau_blue",
+      "value": "rgb(193, 206, 212)"
+    }
+  },
+  {
+    "id": "5",
+    "name": "productivity break",
+    "color": {
+      "name": "aero_blue_2",
+      "value": "rgb(202, 248, 236)"
+    }
+  },
+  {
+    "id": "6",
+    "name": "health",
+    "color": {
+      "name": "teagreen",
+      "value": "rgb(199, 229, 199)"
+    }
+  },
+  {
+    "id": "7",
+    "name": "laze",
+    "color": {
+      "name": "light_cyan",
+      "value": "rgb(202, 247, 255)"
+    }
+  },
+  {
+    "id": "8",
+    "name": "planning",
+    "color": {
+      "name": "azure",
+      "value": "rgb(242, 255, 255)"
+    }
+  }
+]
