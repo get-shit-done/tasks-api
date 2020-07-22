@@ -4,7 +4,7 @@ import { TasksModel } from '../models/tasksModel'
 
 export const getTasks = async (req: Request, res: Response) => {
   try {
-    const tasks = await TasksModel.find()
+    const tasks = await TasksModel.find(req.query)
     success({ statusCode: 200, data: tasks, res })
   } catch (error) {
     failure({ statusCode: 500, errorMessage: 'could not find tasks', res })

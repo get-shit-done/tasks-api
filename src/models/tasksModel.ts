@@ -15,7 +15,6 @@ const taskSchema = new mongoose.Schema<Task>({
   group: {
     type: String,
     required: [true, 'must be grouped'],
-    unique: [true, 'must be unique'],
   },
   instances: Object,
 })
