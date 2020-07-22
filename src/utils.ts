@@ -1,12 +1,13 @@
 import path from 'path'
 import { Response } from 'express'
+import { Document } from 'mongoose'
 
 export const __dirname = path.resolve() // if set to type: module - dirname is undefined
 
 interface ResponseParams {
   statusString?: string
   statusCode: number
-  data?: {}
+  data?: Document | Document[]
   errorMessage?: string
   res: Response
 }

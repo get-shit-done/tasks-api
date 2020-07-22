@@ -16,16 +16,22 @@ interface Todos {
 //   next()
 // }
 
-export const getTodos = (req: Request, res: Response) => {
-  res.send({
-    status: 'success',
-    data: {},
-  })
+export const getTodos = async (req: Request, res: Response) => {
+  try {
+    const todos = await TodoModel.find()
+    success({ statusCode: 201, data: todos, res })
+  } catch (error) {
+    failure({ statusCode: 400, errorMessage: 'some error', res })
+  }
 }
 
-export const getTodo = (req: Request, res: Response) => {
-  // const todo = todos.find(x => x.id === req.params.id)
-  // success({ statusCode: 200, data: todo, res })
+export const getTodo = async (req: Request, res: Response) => {
+  try {
+    const todo = await TodoModel.findById(req.params.id)
+    success({ statusCode: 201, data: todo!, res })
+  } catch (error) {
+    failure({ statusCode: 404, errorMessage: 'none found', res })
+  }
 }
 export const updateTodo = (req: Request, res: Response) => {
   // const todo = todos.find(x => x.id === req.params.id)
