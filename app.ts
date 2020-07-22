@@ -2,8 +2,9 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
-import { router as todosRouter } from './src/routes/todos'
-import { router as groupsRouter } from './src/routes/groups'
+import { router as todosRouter } from './src/routes/todosRoutes'
+import { router as groupsRouter } from './src/routes/groupsRouter'
+import { router as tasksRouter } from './src/routes/tasksRouter'
 
 dotenv.config({ path: './config.env' })
 
@@ -14,3 +15,4 @@ if (process.env.NODE_ENV === 'development') {
 app.use(bodyParser.json())
 app.use('/api/v1/todos', todosRouter)
 app.use('/api/v1/groups', groupsRouter)
+app.use('/api/v1/tasks', tasksRouter)

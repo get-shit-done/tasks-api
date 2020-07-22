@@ -1,61 +1,53 @@
-import fs from 'fs'
-import { v4 as uuid } from 'uuid'
-
-import { __dirname, success, failure } from '../utils'
 import { Request, Response, NextFunction } from 'express'
 
-interface Todos {
-  id: string
-  todoName: string
-  isDone: boolean
-}
+import { __dirname, success, failure } from '../utils'
+import { TodoModel } from '../models/todoModel'
 
-const todos: Todos[] = JSON.parse(fs.readFileSync(`${__dirname}/src/data/todos.json`, 'utf-8'))
+// export const handleBadBody = (req: Request, res: Response, next: NextFunction) => {
+//   if (!req.body.todoName || req.body.isDone === undefined) {
+//     return failure({ statusCode: 400, res })
+//   }
+//   next()
+// }
 
-export const handleBadId = (req: Request, res: Response, next: NextFunction, id: string) => {
-  const selectedTodo = todos.find(x => x.id === id)
-  if (!selectedTodo) {
-    return failure({ statusCode: 404, res })
+export const getTodos = async (req: Request, res: Response) => {
+  try {
+    const todos = await TodoModel.find()
+    success({ statusCode: 201, data: todos, res })
+  } catch (error) {
+    failure({ statusCode: 400, errorMessage: 'some error', res })
   }
-  next()
 }
 
-export const handleBadBody = (req: Request, res: Response, next: NextFunction) => {
-  if (!req.body.todoName || req.body.isDone === undefined) {
-    return failure({ statusCode: 400, res })
+export const getTodo = async (req: Request, res: Response) => {
+  try {
+    const todo = await TodoModel.findById(req.params.id)
+    success({ statusCode: 201, data: todo!, res })
+  } catch (error) {
+    failure({ statusCode: 404, errorMessage: 'none found', res })
   }
-  next()
 }
-
-export const getTodos = (req: Request, res: Response) => {
-  res.send({
-    status: 'success',
-    data: {
-      todos,
-    },
-  })
-}
-
-export const getTodo = (req: Request, res: Response) => {
-  const todo = todos.find(x => x.id === req.params.id)
-  success({ statusCode: 200, data: todo, res })
-}
-export const updateTodo = (req: Request, res: Response) => {
-  const todo = todos.find(x => x.id === req.params.id)
-  const updatedTodo = todo ? { ...todo, ...req.body } : undefined
-  success({ statusCode: 200, data: updatedTodo, res })
-}
-export const deleteTodo = (req: Request, res: Response) => {
-  success({ statusCode: 204, res })
-}
-export const addTodo = (req: Request, res: Response) => {
-  const newTodo = {
-    id: uuid(),
-    ...req.body,
+export const updateTodo = async (req: Request, res: Response) => {
+  try {
+    const todo = await TodoModel.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+    success({ statusCode: 200, data: todo!, res })
+  } catch (error) {
+    failure({ statusCode: 400, errorMessage: 'something went wrong', res })
   }
-  const updatedTodos = [...todos, newTodo]
-
-  fs.writeFile(`${__dirname}/src/data/todos.json`, JSON.stringify(updatedTodos), () => {
+}
+export const deleteTodo = async (req: Request, res: Response) => {
+  try {
+    await TodoModel.findByIdAndDelete(req.params.id)
+    success({ statusCode: 204, res })
+  } catch (error) {
+    failure({ statusCode: 400, errorMessage: 'something went wrong', res })
+  }
+}
+export const addTodo = async (req: Request, res: Response) => {
+  try {
+    const newTodo = await TodoModel.create(req.body)
     success({ statusCode: 201, data: newTodo, res })
-  })
+  } catch (error) {
+    failure({ statusCode: 400, errorMessage: 'invalid data', res })
+  }
 }
