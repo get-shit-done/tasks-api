@@ -1,6 +1,12 @@
 import mongoose from 'mongoose'
 
-const todoSchema = new mongoose.Schema({
+interface Todos {
+  _id: string
+  todoName: string
+  isDone: boolean
+}
+
+const todoSchema = new mongoose.Schema<Todos>({
   todoName: {
     type: String,
     unique: true,

@@ -3,12 +3,6 @@ import { Request, Response, NextFunction } from 'express'
 import { __dirname, success, failure } from '../utils'
 import { TodoModel } from '../models/todoModel'
 
-interface Todos {
-  id: string
-  todoName: string
-  isDone: boolean
-}
-
 // export const handleBadBody = (req: Request, res: Response, next: NextFunction) => {
 //   if (!req.body.todoName || req.body.isDone === undefined) {
 //     return failure({ statusCode: 400, res })
@@ -33,13 +27,21 @@ export const getTodo = async (req: Request, res: Response) => {
     failure({ statusCode: 404, errorMessage: 'none found', res })
   }
 }
-export const updateTodo = (req: Request, res: Response) => {
-  // const todo = todos.find(x => x.id === req.params.id)
-  // const updatedTodo = todo ? { ...todo, ...req.body } : undefined
-  // success({ statusCode: 200, data: updatedTodo, res })
+export const updateTodo = async (req: Request, res: Response) => {
+  try {
+    const todo = await TodoModel.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+    success({ statusCode: 200, data: todo!, res })
+  } catch (error) {
+    failure({ statusCode: 400, errorMessage: 'something went wrong', res })
+  }
 }
-export const deleteTodo = (req: Request, res: Response) => {
-  success({ statusCode: 204, res })
+export const deleteTodo = async (req: Request, res: Response) => {
+  try {
+    await TodoModel.findByIdAndDelete(req.params.id)
+    success({ statusCode: 204, res })
+  } catch (error) {
+    failure({ statusCode: 400, errorMessage: 'something went wrong', res })
+  }
 }
 export const addTodo = async (req: Request, res: Response) => {
   try {
