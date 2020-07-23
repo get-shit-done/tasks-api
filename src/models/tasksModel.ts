@@ -1,7 +1,9 @@
 import mongoose from 'mongoose'
 
 export interface ITask extends mongoose.Document {
-  id: string
+  // timeStamp: string
+  // time: number[]
+  _id: string
   name: string
   group: string
   instances: {
@@ -10,6 +12,12 @@ export interface ITask extends mongoose.Document {
 }
 
 const taskSchema = new mongoose.Schema<ITask>({
+  // timeStamp: {
+  //   type: String,
+  //   required: [true, 'must have timeStamp'],
+  //   unique: [true, 'must be unique'],
+  // },
+  // time: Array,
   name: {
     type: String,
     required: [true, 'must have name'],
