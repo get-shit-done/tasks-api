@@ -7,7 +7,7 @@ export const __dirname = path.resolve() // if set to type: module - dirname is u
 interface ResponseParams {
   statusString?: string
   statusCode: number
-  data?: Document | Document[]
+  data?: any
   errorMessage?: string
   res: Response
 }

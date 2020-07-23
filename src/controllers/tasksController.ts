@@ -1,59 +1,17 @@
-// @ts-ignore
-
 import { Request, Response } from 'express'
-import { uuid } from 'uuidv4'
 import { success, failure } from '../utils'
 import { ITask, TasksModel } from '../models/tasksModel'
 
-const taskRequestMapping = (task: any) => {
-  const { _id, name, group, timeStamp, time } = task
-
-  return {
-    _id,
-    name,
-    group,
-    instances: {
-      [timeStamp]: [time]
-    }
-  }
-}
-
 const tasksResponseMapping = (tasks: ITask[]) => {
-  const mappedData: any = {}
+  const obj: any = {}
 
-  tasks.forEach(task => {
-    const { _id, name, group, instances } = task
-
-    Object.keys(instances).forEach(dayString => {
-      const isMultipleInstances = Array.isArray(instances[dayString][0])
-      const defaultDayShape = { tasks: [] }
-      mappedData[dayString] = mappedData[dayString] || defaultDayShape
-      const defaultTaskShape = {
-        _id,
-        idInstance: uuid(),
-        name,
-        group,
-        time: [],
-      }
-
-      if (!isMultipleInstances) {
-        mappedData[dayString].tasks.push({
-          ...defaultTaskShape,
-          time: instances[dayString],
-        })
-      } else {
-        // TODO: fix this any
-        instances[dayString].forEach((inst: any) => {
-          mappedData[dayString].tasks.push({
-            ...defaultTaskShape,
-            time: inst,
-          })
-        })
-      }
-    })
+  tasks.forEach(({ timestamp }) => {
+    obj[timestamp] = {
+      tasks: tasks.filter(t => t.timestamp === timestamp)
+    }
   })
 
-  return mappedData
+  return obj
 }
 
 export const getTasks = async (req: Request, res: Response) => {
@@ -67,12 +25,9 @@ export const getTasks = async (req: Request, res: Response) => {
 }
 export const addTask = async (req: Request, res: Response) => {
   try {
-    const mapped = taskRequestMapping(req.body)
-    const task = await TasksModel.create(mapped)
-    // console.log('original', task)
+    const task = await TasksModel.create(req.body)
     success({ statusCode: 200, data: task, res })
   } catch (error) {
-    console.log('error', error)
     failure({ statusCode: 500, errorMessage: 'could not add task', res })
   }
 }
@@ -86,13 +41,9 @@ export const getTask = async (req: Request, res: Response) => {
 }
 export const updateTask = async (req: Request, res: Response) => {
   try {
-    const mapped = taskRequestMapping(req.body)
-    const mappedParsed = JSON.parse(JSON.stringify(mapped))
-    console.log('mapped', mappedParsed)
-    const task = await TasksModel.findByIdAndUpdate(req.params.id, mappedParsed, { new: true, runValidators: true })
+    const task = await TasksModel.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
     success({ statusCode: 200, data: task!, res })
   } catch (error) {
-    console.log(error)
     failure({ statusCode: 500, errorMessage: 'could not update task', res })
   }
 }
