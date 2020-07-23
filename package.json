@@ -19,14 +19,15 @@
   },
   "homepage": "https://github.com/get-shit-done/tasks-api#readme",
   "dependencies": {
-    "@types/uuid": "^8.0.0",
+    "@types/cors": "^2.8.6",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.25",
     "morgan": "^1.10.0",
     "ts-node-dev": "^1.0.0-pre.52",
     "typescript": "^3.9.7",
-    "uuid": "^8.2.0"
+    "uuidv4": "^6.2.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",

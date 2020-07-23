@@ -1,22 +1,27 @@
 import mongoose from 'mongoose'
 
-interface Task {
-  _id: String
-  name: String
-  group: String
-  instances: Object
+export interface ITask extends mongoose.Document {
+  timestamp: string
+  _id: string
+  name: string
+  group: string
+  time: number[]
 }
-const taskSchema = new mongoose.Schema<Task>({
+
+const taskSchema = new mongoose.Schema<ITask>({
+  timestamp: {
+    type: String,
+    required: [true, 'must have timestamp'],
+  },
   name: {
     type: String,
     required: [true, 'must have name'],
-    unique: [true, 'must be unique'],
   },
   group: {
     type: String,
     required: [true, 'must be grouped'],
   },
-  instances: Object,
+  time: [Number],
 })
 
-export const TasksModel = mongoose.model('Task', taskSchema)
+export const TasksModel = mongoose.model<ITask>('Task', taskSchema)
