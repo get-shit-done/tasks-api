@@ -31,6 +31,14 @@ export const addTask = async (req: Request, res: Response) => {
     failure({ statusCode: 500, errorMessage: 'could not add task', res })
   }
 }
+export const addTasks = async (req: Request, res: Response) => {
+  try {
+    const tasks = await TasksModel.insertMany(req.body)
+    success({ statusCode: 200, data: tasks, res })
+  } catch (error) {
+    failure({ statusCode: 500, errorMessage: 'could not add tasks', res })
+  }
+}
 export const getTask = async (req: Request, res: Response) => {
   try {
     const task = await TasksModel.findById(req.params.id)
