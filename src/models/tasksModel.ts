@@ -1,12 +1,15 @@
 import mongoose from 'mongoose'
 
-interface Task {
-  _id: String
-  name: String
-  group: String
-  instances: Object
+export interface ITask extends mongoose.Document {
+  id: string
+  name: string
+  group: string
+  instances: {
+    [key: string]: number[] | number[][]
+  }
 }
-const taskSchema = new mongoose.Schema<Task>({
+
+const taskSchema = new mongoose.Schema<ITask>({
   name: {
     type: String,
     required: [true, 'must have name'],
@@ -19,4 +22,4 @@ const taskSchema = new mongoose.Schema<Task>({
   instances: Object,
 })
 
-export const TasksModel = mongoose.model('Task', taskSchema)
+export const TasksModel = mongoose.model<ITask>('Task', taskSchema)
