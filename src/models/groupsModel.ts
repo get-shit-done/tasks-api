@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 interface Group {
   _id: String
   name: String
-  color: String
+  colorId: String
 }
 const taskSchema = new mongoose.Schema<Group>({
   name: {
@@ -11,9 +11,9 @@ const taskSchema = new mongoose.Schema<Group>({
     required: [true, 'must have name'],
     unique: [true, 'must be unique'],
   },
-  color: {
+  colorId: {
     type: String,
-    required: [true, 'must have color'],
+    required: [true, 'must have colorId'],
   },
 })
 

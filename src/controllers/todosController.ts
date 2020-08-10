@@ -18,7 +18,6 @@ export const getTodos = async (req: Request, res: Response) => {
     failure({ statusCode: 400, errorMessage: 'some error', res })
   }
 }
-
 export const getTodo = async (req: Request, res: Response) => {
   try {
     const todo = await TodoModel.findById(req.params.id)
