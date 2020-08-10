@@ -7,10 +7,11 @@ const tasksResponseMapping = (tasks: ITask[]) => {
 
   tasks.forEach(({ timestamp }) => {
     obj[timestamp] = {
-      tasks: tasks.filter(t => t.timestamp === timestamp)
+      tasks: tasks
+        .filter(t => t.timestamp === timestamp)
+        .sort((a, b) => a.time[0] - b.time[0])
     }
   })
-
   return obj
 }
 
