@@ -7,9 +7,7 @@ const tasksResponseMapping = (tasks: ITask[]) => {
 
   tasks.forEach(({ timestamp }) => {
     obj[timestamp] = {
-      tasks: tasks
-        .filter(t => t.timestamp === timestamp)
-        .sort((a, b) => a.time[0] - b.time[0])
+      tasks: tasks.filter(t => t.timestamp === timestamp).sort((a, b) => a.time[0] - b.time[0]),
     }
   })
   return obj
@@ -17,7 +15,9 @@ const tasksResponseMapping = (tasks: ITask[]) => {
 
 export const getTasks = async (req: Request, res: Response) => {
   try {
-    const tasks = await TasksModel.find(req.query)
+    const { month } = req.query
+    const reg = new RegExp(month as string, 'gi')
+    const tasks = await TasksModel.find().where('timestamp').regex(reg)
     const mappedTasks = tasksResponseMapping(tasks)
     success({ statusCode: 200, data: mappedTasks, res })
   } catch (error) {
