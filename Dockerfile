@@ -38,3 +38,14 @@ RUN tsc
 FROM base as prod
 COPY --from=pre-prod /app/public /app
 CMD [ "node", "server.js" ]
+
+
+
+# TODO
+# back everything up
+# expand storage of this linux dist
+# publish this dockerfile
+# add docker compose
+# add env_file from docker compose
+# dockerize webapp
+# get them working together
