@@ -11,6 +11,7 @@ EXPOSE 3005
 WORKDIR /app
 COPY package*.json ./
 COPY config.env ./
+COPY tsconfig.json ./
 
 RUN npm ci \
   && npm cache clean --force
