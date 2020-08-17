@@ -7,5 +7,5 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreat
 })
 
 app.listen(process.env.PORT || 3005, () => {
-  console.log(`started on port ${process.env.PORT}`)
+  console.log(`started on port ${process.env.PORT || 3005}`)
 })
