@@ -11,7 +11,6 @@ EXPOSE 3005
 WORKDIR /app
 COPY package*.json ./
 COPY config.env ./
-COPY tsconfig.json ./
 
 RUN npm ci \
   && npm cache clean --force
@@ -33,12 +32,13 @@ COPY . .
 
 
 FROM test as pre-prod
+COPY tsconfig.json ./
 RUN tsc
-# remove files, clean up for prod
+RUN rm ./tsconfig.json && rm ./build/*.map
 
 
 FROM base as prod
-COPY --from=pre-prod /app/public /app
+COPY --from=pre-prod /app/build /app
 CMD [ "node", "server.js" ]
 
 
