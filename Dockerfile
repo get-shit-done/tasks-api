@@ -10,6 +10,7 @@ ENTRYPOINT ["/tini", "--"]
 EXPOSE 3005
 WORKDIR /app
 COPY package*.json ./
+COPY config.env ./
 
 RUN npm ci \
   && npm cache clean --force
@@ -42,10 +43,12 @@ CMD [ "node", "server.js" ]
 
 
 # TODO
-# back everything up
-# expand storage of this linux dist
-# publish this dockerfile
+
+# generate dockerfile
+# generate compose file
+# generate express app
 # add docker compose
 # add env_file from docker compose
+# publish this dockerfile
 # dockerize webapp
 # get them working together
