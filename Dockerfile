@@ -1,7 +1,6 @@
 FROM node:14.7-slim as base
 ENV NODE_ENV=production
 
-# add tini
 ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
@@ -32,23 +31,20 @@ COPY . .
 
 
 FROM test as pre-prod
+COPY tsconfig.json ./
 RUN tsc
-# remove files, clean up for prod
+RUN rm ./tsconfig.json && rm ./build/*.map
 
 
 FROM base as prod
-COPY --from=pre-prod /app/public /app
+COPY --from=pre-prod /app/build /app
 CMD [ "node", "server.js" ]
 
 
 
 # TODO
 
-# generate dockerfile
-# generate compose file
-# generate express app
-# add docker compose
-# add env_file from docker compose
 # publish this dockerfile
 # dockerize webapp
 # get them working together
+# generate express app

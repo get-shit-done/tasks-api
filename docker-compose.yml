@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  tasks-api:
+    build:
+      context: .
+      target: dev
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3005:3005
+    volumes:
+      - .:/app
+      - /app/node_modules
