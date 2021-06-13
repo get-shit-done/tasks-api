@@ -1,0 +1,85 @@
+openapi: 3.1.0
+info:
+  title: tasks
+  version: '1.0'
+  summary: Tasks api for get-shit-done
+  description: As above
+  license:
+    name: MIT
+    identifier: MIT
+  contact:
+    name: Vincent
+    url: 'https://github.com/get-shit-done'
+servers:
+  - url: 'http://localhost:3005/api/v1'
+paths:
+  '/tasks?month={month}':
+    parameters:
+      - schema:
+          type: string
+        name: month
+        in: path
+        required: true
+    get:
+      summary: Get Tasks by month
+      tags: []
+      responses:
+        '200':
+          description: Tasks Found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+              examples:
+                getTasksMock:
+                  value:
+                    - _id: 5f1941fa09b0d9cb7d0e1bf8
+                      time:
+                        - 2
+                        - 10
+                      timestamp: 'Wed Jul 01 2020 00:00:00 GMT+0700 (Indochina Time)'
+                      name: sleep
+                      group: essentials
+        '404':
+          description: Tasks Not Found
+      operationId: get-tasks
+      description: Get the tasks by month
+components:
+  schemas:
+    Task:
+      title: Task
+      type: object
+      description: Task
+      examples:
+        - id: 142
+          firstName: Alice
+          lastName: Smith
+          email: alice.smith@gmail.com
+          dateOfBirth: '1997-10-31'
+          emailVerified: true
+          signUpDate: '2019-08-24'
+      properties:
+        _id:
+          type: string
+          description: Unique identifier for the task
+        time:
+          type: array
+          minItems: 2
+          maxItems: 2
+          description: The from and to time of the task
+          items:
+            type: integer
+        timestamp:
+          type: string
+        name:
+          type: string
+        group:
+          type: string
+      required:
+        - _id
+        - time
+        - timestamp
+        - name
+        - group
