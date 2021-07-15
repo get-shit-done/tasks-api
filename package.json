@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "develop": "ts-node-dev server.ts",
-    "deploy": "NODE_ENV=production tsc"
+    "start": "ts-node-dev server.ts",
+    "build": "NODE_ENV=production tsc"
   },
   "repository": {
     "type": "git",
