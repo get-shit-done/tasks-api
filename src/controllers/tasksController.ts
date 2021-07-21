@@ -16,8 +16,9 @@ const tasksResponseMapping = (tasks: ITask[]) => {
 export const getTasks = async (req: Request, res: Response) => {
   try {
     const { month } = req.query
-    const reg = new RegExp(month as string, 'gi')
-    const tasks = await TasksModel.find().where('timestamp').regex(reg)
+    const monthAsString = month as string
+    const monthRegex = new RegExp(`${monthAsString}.+2021`, 'g')
+    const tasks = await TasksModel.find().where('timestamp').regex(monthRegex)
     const mappedTasks = tasksResponseMapping(tasks)
     success({ statusCode: 200, data: mappedTasks, res })
   } catch (error) {
